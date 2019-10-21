@@ -2,14 +2,14 @@
 
 ## Overview
 
-Goals of this repository:
+### Goals of this repository:
 
 * Allow testing of new features and changes to data model without disrupting current reports
 * Documentation on all changes
 * Scalability
 * Cross department communication
 
-**File and Query Detail**
+### File and Query Detail
 * Service_Data.pbix
   * Main data model, feeds most of the reports in the Service Analytics app
 * Labor_Compliance.pbix
