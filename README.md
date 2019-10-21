@@ -2,7 +2,7 @@
 
 ## Overview
 
-The goal of this repository is the following:
+Goals of this repository:
 
 * Allow testing of new features and changes to data model without disrupting current reports
 * Documentation on all changes
