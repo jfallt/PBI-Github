@@ -7,6 +7,7 @@ The goal of this repository is the following:
 * Allow testing of new features and changes to data model without disrupting current reports
 * Documentation on all changes
 * Scalability
+* Cross department communication
 
 **File and Query Detail**
 * Service_Data.pbix
