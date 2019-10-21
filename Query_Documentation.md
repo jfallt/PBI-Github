@@ -58,10 +58,10 @@
 <details>
   <summary> PMs  </summary>
 
-* [wo_PM_backlog_dbo](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PM%20Backlog/wo_PM_backlog_dbo.sql)
-* [wo_PM_SVMXC_pm_backlog_count](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PM%20Backlog/wo_SVMXC_pm_backlog_count.sql)
-* [wo_PM_SVMXC_pm_on_breakfix](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PM%20Backlog/wo_SVMXC_pm_on_breakfix.sql)
-* [wo_PM_SVMXC_pm_creation_prediction](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PM%20Backlog/wo_SVMXC_pm_creation_prediction.sql)
+* [wo_PM_backlog_dbo](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PMs/wo_PM_backlog_dbo.sql)
+* [wo_PM_SVMXC_pm_backlog_count](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PMs/wo_SVMXC_pm_backlog_count.sql)
+* [wo_PM_SVMXC_pm_on_breakfix](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PMs/wo_SVMXC_pm_on_breakfix.sql)
+* [wo_PM_SVMXC_pm_creation_prediction](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PMs/wo_SVMXC_pm_creation_prediction.sql)
  
 
 </details>
