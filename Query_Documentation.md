@@ -1,5 +1,47 @@
 # Query Documentation :open_book:
 
+## Table of Contents
+
+* [Definitions]
+* [Service_Data.pbix Queries]
+
+## Definitions
+
+The following definitions are used when defining queries for various purposes.
+
+### Install Types
+* **Project**: work orders with a project name in the field *SMAX_PS_Project_Name__c.*
+  * These are used for large installs for companies such as Wal-Mart or Amazon
+* **Single**: All other types are denoted as "Single" Installs
+
+#### Availability
+
+<details>
+  <summary> Definition  </summary>
+  
+***
+
+Determines whether or not the work can be done. All scheduled work orders go in a separate bucket titled "Scheduled"
+  
+**Table 1.** By Order Status
+
+| Unavailable  | Available  |
+| ------------- | ------------- |
+| Parts Hold | On Site|
+| Pending Equipment/Parts | Open |
+| Supply Chain Hold | Ready to Schedule |
+| Sales Hold | Reschedule |
+| Pending Contractor | Scheduling Hold |
+| OS Pending contractor (ETA) | Service Hold |
+| OS Pending contractor (Paperwork) | |
+| OS Hold for shipping ETA | |
+| OS Warranty | |
+| Customer Success Hold | |
+| Customer Hold | |
+| Credit Hold | |
+
+</details>
+
 ## Service_Data.pbix Queries :memo:
 
 Each section below details each query used in the Service_Data.pbix file, with links to each query.
@@ -77,35 +119,6 @@ Refers to any type of backlog that is not preventative maintenance such as insta
   * Uses the dbo history table (for data before 2019/05/01)
  
 ### Install and Removal Backlogs
-
-#### Install Types
-* **Project**: work orders with a project name in the field *SMAX_PS_Project_Name__c.*
-  * These are used for large installs for companies such as Wal-Mart or Amazon
-* **Single**: All other types are denoted as "Single" Installs
-
-<details>
-  <summary> Availability  </summary>
-  
-***
-  
-**Table 1.** By Order Status
-
-| Unavailable  | Available  |
-| ------------- | ------------- |
-| Parts Hold | On Site|
-| Pending Equipment/Parts | Open |
-| Supply Chain Hold | Ready to Schedule |
-| Sales Hold | Reschedule |
-| Pending Contractor | Scheduling Hold |
-| OS Pending contractor (ETA) | Service Hold |
-| OS Pending contractor (Paperwork) | |
-| OS Hold for shipping ETA | |
-| OS Warranty | |
-| Customer Success Hold | |
-| Customer Hold | |
-| Credit Hold | |
-
-</details>
 
 ---
 ##### Project Installs (and Purchase Installs)
