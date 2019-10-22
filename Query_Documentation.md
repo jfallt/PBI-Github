@@ -2,8 +2,8 @@
 
 ## Table of Contents
 
-* [Definitions]
-* [Service_Data.pbix Queries]
+* [Definitions](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#definitions)
+* [Service_Data.pbix Queries](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#definitions)
 
 ## Definitions
 
