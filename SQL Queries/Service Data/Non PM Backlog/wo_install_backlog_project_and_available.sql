@@ -31,17 +31,12 @@ SELECT id
 	FROM [Temporal].[SVMXCServiceOrder] FOR SYSTEM_TIME ALL s
 	CROSS APPLY RelativeAsOfTable rt
 	WHERE s.SVMXC__Order_Type__c IN ('Install', 'Purchase Install')
-	AND s.SVMXC__Order_Status__c IN ('Parts Hold'
-						 ,'Pending Equipment/Parts'
-						 ,'Supply Chain Hold'
-						 ,'Sales Hold'
-						 ,'Pending Contractor'
-						 ,'OS Pending contractor (ETA)'
-						 ,'OS Pending contractor (Paperwork)'
-						 ,'OS Hold for shipping ETA'
-						 ,'OS Warranty'
-						 ,'Customer Success Hold'
-						 ,'Customer Hold')
+	AND s.SVMXC__Order_Status__c IN ('On Site'
+					,'Open'
+					,'Ready to Schedule'
+					,'Reschedule'
+					,'Scheduling Hold'
+					,'Service Hold')
 	AND s.VersionStartTime < rt.AsOfDate
 	AND s.VersionEndTime > rt.AsOfDate
 	AND SMAX_PS_Project_Name__c IS NOT NULL
