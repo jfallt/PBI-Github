@@ -29,9 +29,14 @@
   <summary> MIF  </summary>
 
 * [MIF_Current_Installed_Products](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/MIF/MIF_Current_Installed_Products.sql)
+  * Not currently used for any reports
 * [MIF_Historic](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/MIF/MIF_Historic.sql)
+  * Counts by Market, Product Family
 * [MIF_Historic_PreConversion](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/MIF/MIF_Historic_PreConversion.sql)
+  * Counts by Market, Product Family
+  * Combined with the query above in PBI for complete MIF history
 </details>
+
 
 <details>
   <summary> Non PM Backlog  </summary>
