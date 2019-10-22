@@ -25,7 +25,7 @@ The following definitions are used when defining queries for various purposes.
 
 Determines whether or not the work can be done. All scheduled work orders go in a separate bucket titled "Scheduled"
   
-**Table 1.** By Order Status
+**Table 1.** Availability By Order Status
 
 | Unavailable  | Available  |
 | ------------- | ------------- |
