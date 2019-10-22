@@ -160,22 +160,36 @@ Refers to any type of backlog that is not preventative maintenance such as insta
 
 </details>
 
-## WO Atttributes
+### WO Atttributes
 
 <details>
   <summary> WO Attributes  </summary>
  
-These are additions to the master_SVMXC_Service_Order.sql table in PBI.
+These are additions to the master_SVMXC_Service_Order.sql table in PBI. All abbreviations are defined above.
 
 * [wo_ftf_by_tech](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_ftf_by_tech.sql)
-  * FTF: First Time FIx
+  * FTF
+  * Shows resolution code and technician at time of non FTF
 * [wo_labor_days](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_labor_days.sql)
+  * Uses labor transactions as another way to determine if a work order was an FTF (i.e. 2 visits is not an FTF)
 * [wo_reschedules](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_reschedules.sql)
+  * Identify distinct scheduled dates (anything with 2 or more has n - 1 reschedules)
+  * First scheduled date
+  * Final scheduled date
 * [wo_svmxc_order_history](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_svmxc_order_history.sql)
+  * Time in status
+  * Used for Install SLA times
+  * This is a part of the Temporal.SVMXCServiceOrder table but is pulled in separately to filter cancelled work orders to reduce data load
 * [wo_work_order_line](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_work_order_line.sql)
- 
+* Aggregates cost by category
+  * Parts
+  * Tubing
+  * Machines
+  * Labor
 
 </details>
+
+### WO Lookup
 
 <details>
   <summary> WO Lookup </summary>
