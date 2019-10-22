@@ -3,8 +3,8 @@
 ## Table of Contents :open_file_folder:
 
 * [Definitions](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#definitions)
-  * Install Types
-  * Order Availability
+  * [Install Types](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#install-types)
+  * [Order Availability](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#order-availability-heavy_check_mark)
 * [Service_Data.pbix Queries](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#service_datapbix-queries-memo)
 
 ## Definitions
@@ -19,7 +19,7 @@ The following definitions are used when defining queries for various purposes.
 #### Order Availability :heavy_check_mark:
 
 <details>
-  <summary> Definition  </summary>
+  <summary> Definition Below  </summary>
   
 ***
 
@@ -44,9 +44,24 @@ Determines whether or not the work can be done. All scheduled work orders go in 
 
 </details>
 
+### Abbreviations
+
+<details>
+  <summary> The table below details abbreviations, their full names and definitions used in Service Reporting  </summary>
+
+| Abbreviation  | Full Name | Definition  |
+| ------------- | ------------- | ------------- |
+| FTF |  First Time Fix | Indicates the percentage of time a technician is able to fix the issue the first time, without need for additional expertise, information, or parts |
+| FTI |  First Time Install | Same as above but for installations |
+| OTR | On Time Rating | An order is considered completed on time if it resolved before or on the resolution customer by date. On Time Rating is the percentage of break fix calls completed on time |
+
+</details>
+
 ## Service_Data.pbix Queries :memo:
 
 Each section below details each query used in the Service_Data.pbix file, with links to each query.
+
+### Master Tables
 
 <details>
   <summary> Master Tables  </summary>
@@ -54,13 +69,13 @@ Each section below details each query used in the Service_Data.pbix file, with l
 ***
 Used as the basis for a report or a way to link different tables together for filtering purposes to ensure the correct data is shown.
 
-### Report Bases
+#### Report Bases
 * [master_MIF](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_MIF.sql)
   * MIF or *Machines in Field*
 * [master_SVMXC_Service_Order](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_SVMXC_Service_Order.sql)
   * All ServiceMax service orders
   
- ### Master Filter Tables
+ #### Master Filter Tables
 
 * [master_account](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_account.sql)
   * Only includes accounts with SVMXC service orders
@@ -82,6 +97,7 @@ Used as the basis for a report or a way to link different tables together for fi
 
 </details>
 
+### MIF (Machines in Field)
 
 <details>
   <summary> MIF  </summary>
@@ -95,6 +111,7 @@ Used as the basis for a report or a way to link different tables together for fi
   * Combined with the query above in PBI for complete MIF history
 </details>
 
+### PMs (Preventative Maintenance)
 <details>
   <summary> PMs  </summary>
 
@@ -106,6 +123,7 @@ Used as the basis for a report or a way to link different tables together for fi
 
 </details>
 
+### Non PM Backlog
 
 <details>
   <summary> Non PM Backlog  </summary>
@@ -120,7 +138,7 @@ Refers to any type of backlog that is not preventative maintenance such as insta
 * [wo_backlog_count_nonpm_dboHistory](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_backlog_count_nonpm_dboHistory.sql)
   * Uses the dbo history table (for data before 2019/05/01)
  
-### Install and Removal Backlogs
+#### Install and Removal Backlogs
 
 ---
 ##### Project Installs (and Purchase Installs)
@@ -142,12 +160,15 @@ Refers to any type of backlog that is not preventative maintenance such as insta
 
 </details>
 
-
+## WO Atttributes
 
 <details>
   <summary> WO Attributes  </summary>
+ 
+These are additions to the master_SVMXC_Service_Order.sql table in PBI.
 
 * [wo_ftf_by_tech](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_ftf_by_tech.sql)
+  * FTF: First Time FIx
 * [wo_labor_days](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_labor_days.sql)
 * [wo_reschedules](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_reschedules.sql)
 * [wo_svmxc_order_history](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_svmxc_order_history.sql)
