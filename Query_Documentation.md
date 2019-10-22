@@ -6,6 +6,17 @@ Each section below details each query used in the Service_Data.pbix file, with l
 
 <details>
   <summary> Master Tables  </summary>
+ 
+***
+Used as the basis for a report or a way to link different tables together for filtering purposes to ensure the correct data is shown.
+
+### Report Bases
+* [master_MIF](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_MIF.sql)
+  * MIF or *Machines in Field*
+* [master_SVMXC_Service_Order](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_SVMXC_Service_Order.sql)
+  * All ServiceMax service orders
+  
+ ### Master Filter Tables
 
 * [master_account](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_account.sql)
   * Only includes accounts with SVMXC service orders
@@ -17,17 +28,14 @@ Each section below details each query used in the Service_Data.pbix file, with l
   * Used to tie different tables together by Market (i.e. master_SVMXC_Service_Order and master_MIF)
 * [master_item](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_item.sql)
   * Master Product List
-  * Joined with Product2Master to consolidate similar products
+  * Joined with Product2Master to consolidate similar products with different productIDs
 * [master_location](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_location.sql)
-* [master_MIF](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_MIF.sql)
-  * MIF or *Machines in Field*
 * [master_order_types](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_order_types.sql)
   * All order types from SVMXC
 * [master_productFamily](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_productFamily.sql)
 * [master_sales_reps](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_sales_reps.sql)
   * Sales reps on SVMXC orders
-* [master_SVMXC_Service_Order](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_SVMXC_Service_Order.sql)
-  * All ServiceMax service orders
+
 </details>
 
 
@@ -47,18 +55,60 @@ Each section below details each query used in the Service_Data.pbix file, with l
 <details>
   <summary> Non PM Backlog  </summary>
 
+***
+  
+Refers to any type of backlog that is not preventative maintenance such as installs, purchase installs, removals and repossessions.
+* The following queries are all combined into one table in PBI but are run separately to reduce the load on the database.
+
+***
+
 * [wo_backlog_count_nonpm_dboHistory](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_backlog_count_nonpm_dboHistory.sql)
-* Install Backlog
-  * **Project**: work orders with a project name in the field *SMAX_PS_Project_Name__c.*
+  * Uses the dbo history table (for data before 2019/05/01)
+ 
+### Install and Removal Backlogs
+
+#### Install Types
+* **Project**: work orders with a project name in the field *SMAX_PS_Project_Name__c.*
   * These are used for large installs for companies such as Wal-Mart or Amazon
-    * [wo_install_backlog_project_and_available](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_project_and_available.sql)
-    * [wo_install_backlog_project_and_scheduled](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_project_and_scheduled.sql)
-    * [wo_install_backlog_project_and_unavailable](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_project_and_unavailable.sql)
-    * [wo_install_backlog_single_and_available](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_single_and_available.sql)
-    * [wo_install_backlog_single_and_scheduled](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_single_and_scheduled.sql)
-    * [wo_install_backlog_single_and_unavailable](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_single_and_unavailable.sql)
+* **Single**: All other types are denoted as "Single" Installs
+
+<details>
+  <summary> Availability  </summary>
+  
+***
+  
+**Table 1.** By Order Status
+
+| Unavailable  | Available  |
+| ------------- | ------------- |
+| Parts Hold | On Site|
+| Pending Equipment/Parts | Open |
+| Supply Chain Hold | Ready to Schedule |
+| Sales Hold | Reschedule |
+| Pending Contractor | Scheduling Hold |
+| OS Pending contractor (ETA) | Service Hold |
+| OS Pending contractor (Paperwork) | |
+| OS Hold for shipping ETA | |
+| OS Warranty | |
+| Customer Success Hold | |
+| Customer Hold | |
+| Credit Hold | |
+
+</details>
+
 ---
-* Removal Backlog
+##### Project Installs (and Purchase Installs)
+* [wo_install_backlog_project_and_available](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_project_and_available.sql)
+* [wo_install_backlog_project_and_scheduled](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_project_and_scheduled.sql)
+* [wo_install_backlog_project_and_unavailable](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_project_and_unavailable.sql)
+
+##### Single Installs (and Purchase Installs)
+* [wo_install_backlog_single_and_available](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_single_and_available.sql)
+* [wo_install_backlog_single_and_scheduled](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_single_and_scheduled.sql)
+* [wo_install_backlog_single_and_unavailable](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_single_and_unavailable.sql)
+---
+
+##### Removal (and Reposession) Backlog
   * [wo_install_backlog_project_and_available](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_removal_backlog_available.sql)
   * [wo_install_backlog_project_and_scheduled](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_removal_backlog_scheduled.sql)
   * [wo_install_backlog_project_and_unavailable](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_removal_backlog_unavailable.sql)
