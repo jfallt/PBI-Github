@@ -145,6 +145,7 @@ Refers to any type of backlog that is not preventative maintenance such as insta
   <summary> WO Lookup </summary>
 
 * [wo_lookup_availability_and_group](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_availability_and_group.sql)
+  * Availability was [defined above](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#install-types)
 * [wo_lookup_pm_slas](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_pm_slas.sql)
 * [wo_lookup_problemcode_groups](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_problemcode_groups.sql)
 * [wo_lookup_rescode_groups](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_rescode_groups.sql)
