@@ -1,4 +1,8 @@
-# Query Table of Contents
+# Query Documentation :open_book:
+
+## Service_Data.pbix Queries :memo:
+
+Each section below details each query used in the Service_Data.pbix file, with links to each query.
 
 <details>
   <summary> Master Tables  </summary>
