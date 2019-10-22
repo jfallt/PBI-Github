@@ -1,9 +1,11 @@
 # Query Documentation :open_book:
 
-## Table of Contents
+## Table of Contents :open_file_folder:
 
 * [Definitions](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#definitions)
-* [Service_Data.pbix Queries](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#definitions)
+  * Install Types
+  * Order Availability
+* [Service_Data.pbix Queries](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#service_datapbix-queries-memo)
 
 ## Definitions
 
@@ -14,7 +16,7 @@ The following definitions are used when defining queries for various purposes.
   * These are used for large installs for companies such as Wal-Mart or Amazon
 * **Single**: All other types are denoted as "Single" Installs
 
-#### Availability
+#### Order Availability :heavy_check_mark:
 
 <details>
   <summary> Definition  </summary>
