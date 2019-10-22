@@ -10,6 +10,7 @@
   * Categorized by RO (*Reverse Osmosis*) or Standard
 * [master_FSM_to_Market_Lookup](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_FSM_to_Market_Lookup.sql)
   * Current Market assignments by FSM <Field Service Manager>
+  * Used to tie different tables together by Market (i.e. master_SVMXC_Service_Order and master_MIF)
 * [master_item](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_item.sql)
   * Master Product List
   * Joined with Product2Master to consolidate similar products
