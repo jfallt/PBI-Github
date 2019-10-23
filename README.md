@@ -1,5 +1,17 @@
 # PowerBI Version Control :tada:
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Overview](#overview)
+  - [Goals of this repository](#goals-of-this-repository)
+  - [File and Query Detail](#file-and-query-detail)
+  - [Golden Dataset Methodology](#golden-dataset-methodology)
+    - [Key Differences](#key-differences)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Overview
 
 ### Goals of this repository

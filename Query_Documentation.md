@@ -1,11 +1,27 @@
 # Query Documentation :open_book:
 
-## Table of Contents :open_file_folder:
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-* [Definitions](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#definitions)
-  * [Install Types](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#install-types)
-  * [Order Availability](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#order-availability-heavy_check_mark)
-* [Service_Data.pbix Queries](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#service_datapbix-queries-memo)
+- [Definitions](#definitions)
+  - [Install Types](#install-types)
+    - [Order Availability :heavy_check_mark:](#order-availability-heavy_check_mark)
+  - [Abbreviations](#abbreviations)
+- [Service_Data.pbix Queries :memo:](#service_datapbix-queries-memo)
+  - [Master Tables](#master-tables)
+    - [Report Bases](#report-bases)
+  - [MIF (Machines in Field)](#mif-machines-in-field)
+  - [PMs (Preventative Maintenance)](#pms-preventative-maintenance)
+  - [Non PM Backlog](#non-pm-backlog)
+    - [Install and Removal Backlogs](#install-and-removal-backlogs)
+      - [Project Installs (and Purchase Installs)](#project-installs-and-purchase-installs)
+      - [Single Installs (and Purchase Installs)](#single-installs-and-purchase-installs)
+      - [Removal (and Reposession) Backlog](#removal-and-reposession-backlog)
+  - [WO Atttributes](#wo-atttributes)
+  - [WO Lookup](#wo-lookup)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Definitions
 
