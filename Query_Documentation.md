@@ -39,9 +39,9 @@ The following definitions are used when defining queries for various purposes.
   
 ***
 
-Determines whether or not the work can be done. All scheduled work orders go in a separate bucket titled "Scheduled"
+Determines whether or not the work can be completed at this time. All scheduled work orders go in a separate bucket titled "Scheduled"
   
-**Table 1.** Availability By Order Status
+#### Availability By Order Status
 
 | Unavailable  | Available  |
 | ------------- | ------------- |
@@ -65,11 +65,31 @@ Determines whether or not the work can be done. All scheduled work orders go in 
 <details>
   <summary> The table below details abbreviations, their full names and definitions used in Service Reporting  </summary>
 
+#### Basic Terms
+
+| Abbreviation  | Full Name | Definition  |
+| ------------- | ------------- | ------------- |
+| WO | Work Order |  |
+| RMR | Recurring Monthly Revenue | Money received from machine rentals |
+| MIF | Machines in Field | These are the products in the field. This definition varies by department. Finance defines as machines with RMR while service defines as machines with subscription type of maintenance or rental. |
+| PM | Preventative Maintenace | Cleaning the machine and changing filters |
+| NRU | Non-responding Unit | GPS tracking unit failures, tracked by fleet admin |
+
+#### KPIs
+
 | Abbreviation  | Full Name | Definition  |
 | ------------- | ------------- | ------------- |
 | FTF |  First Time Fix | Indicates the percentage of time a technician is able to fix the issue the first time, without need for additional expertise, information, or parts |
 | FTI |  First Time Install | Same as above but for installations |
 | OTR | On Time Rating | An order is considered completed on time if it resolved before or on the resolution customer by date. On Time Rating is the percentage of break fix calls completed on time |
+| SLA | Service Level Agreement | These vary based on order type |
+
+#### Time
+
+| Abbreviation  | Full Name |
+| ------------- | ------------- |
+| TTM | Trailing 12 Months |
+| EoP | End of Period |
 
 </details>
 
@@ -180,12 +200,18 @@ Refers to any type of backlog that is not preventative maintenance such as insta
 
 <details>
   <summary> WO Attributes  </summary>
- 
-These are additions to the master_SVMXC_Service_Order.sql table in PBI. All abbreviations are defined above.
+
+***
+
+1. These cannot be determined by calculated columns within PBI
+1. Each query has its own set of parameters defined below
+1. All abbreviations are defined above
 
 * [wo_ftf_by_tech](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_ftf_by_tech.sql)
-  * FTF
-  * Shows resolution code and technician at time of non FTF
+  * When a technician selected "Additional Work Required", this query pulls the first row containing the following:
+      * Resolution Code
+      * Technician
+      * Time
 * [wo_labor_days](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_labor_days.sql)
   * Uses labor transactions as another way to determine if a work order was an FTF (i.e. 2 visits is not an FTF)
 * [wo_reschedules](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_reschedules.sql)
@@ -197,11 +223,12 @@ These are additions to the master_SVMXC_Service_Order.sql table in PBI. All abbr
   * Used for Install SLA times
   * This is a part of the Temporal.SVMXCServiceOrder table but is pulled in separately to filter cancelled work orders to reduce data load
 * [wo_work_order_line](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_work_order_line.sql)
-* Aggregates cost by category
-  * Parts
-  * Tubing
-  * Machines
-  * Labor
+  * Aggregates cost by category
+    * Parts
+    * Tubing
+    * Machines
+    * Labor
+    * Filters
 
 </details>
 
