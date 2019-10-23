@@ -1,3 +1,7 @@
+;WITH Max_AsOfDate AS
+(SELECT MAX(asofdate) as MaxAsOfDate
+FROM [Reporting].[QforceSubscriptionFinancialAndContractual]) 
+
 select r.Customer_Name,
        r.Customer_Number as cust_num,
        r.Site_Sequence as cust_seq,
@@ -24,4 +28,4 @@ LEFT JOIN temporal.zipcode z on z.Id = r.PostalCodeID
 LEFT JOIN [Temporal].[QforceSite] s on s.[Id] = r.[SiteID]
 LEFT JOIN Temporal.SVMXCServiceGroupMembers m on z.Technician__c = m.id  
 WHERE r.entry_quantity__c > 0
-AND r.asofdate = CAST(DATEADD(DAY, -1, GETDATE()) AS DATE)
+AND r.asofdate = (SELECT * FROM Max_AsOfDate)
