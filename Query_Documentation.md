@@ -28,9 +28,10 @@
 The following definitions are used when defining queries for various purposes.
 
 ### Install Types
-* **Project**: work orders with a project name in the field *SMAX_PS_Project_Name__c.*
-  * These are used for large installs for companies such as Wal-Mart or Amazon
-* **Single**: All other types are denoted as "Single" Installs
+| Term  | Definition |
+| ------| :---|
+| Project |  Work orders with a project name in the column *SMAX_PS_Project_Name__c*. Used for large installs for companies such as Wal-Mart or Amazon
+| Single |  All others are denoted as "Single" Installs |
 
 #### Order Availability :heavy_check_mark:
 
@@ -133,7 +134,7 @@ Used as the basis for a report or a way to link different tables together for fi
 
 </details>
 
-### MIF (Machines in Field)
+### MIF
 
 <details>
   <summary> MIF  </summary>
@@ -147,7 +148,7 @@ Used as the basis for a report or a way to link different tables together for fi
   * Combined with the query above in PBI for complete MIF history
 </details>
 
-### PMs (Preventative Maintenance)
+### PMs
 <details>
   <summary> PMs  </summary>
 
