@@ -8,7 +8,7 @@
   - [Goals of this repository](#goals-of-this-repository)
   - [File and Query Detail](#file-and-query-detail)
   - [Golden Dataset Methodology](#golden-dataset-methodology)
-    - [Key Differences](#key-differences)
+    - [Golden Dataset Diagram](#golden-dataset-diagram)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
