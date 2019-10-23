@@ -33,9 +33,10 @@
 
 * The Service Analytics PBI environment uses a modified version of the [golden dataset](https://exceleratorbi.com.au/new-power-bi-reports-golden-dataset/)
 * Version history, commentary, and documentation are captured in this github repository
-* Additions, Updates (optimizations etc.), and changes require a new branch and approval
+* Additions, updates (optimizations etc.), and changes require a new branch and approval
 * .pbix files are re-published to web after branch is merged
 
+#### Golden Dataset Diagram
 <details>
   <summary> Golden Dataset Diagram  </summary>
 
