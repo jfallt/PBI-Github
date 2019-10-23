@@ -17,7 +17,7 @@ SELECT EOMONTH(GETDATE(), -1) as 'DateCheck1'
 UNPIVOT
 		(
 		AsOfDate FOR DateCheck IN (DateCheck1, DateCheck2, DateCheck3, DateCheck4, DateCheck5, DateCheck6
-								  ,DateCheck7, DateCheck8, DateCheck9, DateCheck10, DateCheck11, DateCheck12)
+					,DateCheck7, DateCheck8, DateCheck9, DateCheck10, DateCheck11, DateCheck12)
 		) pvt1
 ),
 
@@ -101,8 +101,8 @@ Install_Unpivot AS
 	UNPIVOT
 		(
 		RecordCount FOR DateCheck IN (
-										DateCheck1 ,DateCheck2 ,DateCheck3 ,DateCheck4 ,DateCheck5 ,DateCheck6
-									   ,DateCheck7 ,DateCheck8 ,DateCheck9 ,DateCheck10 ,DateCheck11 ,DateCheck12
+						DateCheck1 ,DateCheck2 ,DateCheck3 ,DateCheck4 ,DateCheck5 ,DateCheck6
+						,DateCheck7 ,DateCheck8 ,DateCheck9 ,DateCheck10 ,DateCheck11 ,DateCheck12
 									 )
 		) pvt2
 ),
