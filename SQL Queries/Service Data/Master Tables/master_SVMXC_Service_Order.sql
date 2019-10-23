@@ -100,5 +100,3 @@ LEFT JOIN [Temporal].[QforceSite] qs on qs.Id = q.[Site__c]
 LEFT JOIN [Temporal].[SVMXCInstalledProduct] sip on sip.[Q_Number__c] = Scanned_Q_Number__c AND sip.SVMXC__Status__c = 'Active'
 WHERE 1=1
 AND SVMXC__Order_Type__c IS NOT NULL
-AND SVMXC__Order_Status__c <> 'Cancel'
-AND sip.id IS NOT NULL
