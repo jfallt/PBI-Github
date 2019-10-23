@@ -27,10 +27,6 @@
 <details>
   <summary> Golden Dataset Diagram  </summary>
 
-![](https://exceleratorbi.com.au/wp-content/uploads/2018/06/image_thumb.png)
-
-#### Key Differences
-* "Golden Datasets" are housed in GitHub using LFS instead of onedrive
-* Only one appspace is used with different reports stemming from the data model
+![](https://github.com/jfallt/PBI-Github/blob/master/Golden_Dataset_Git_Workflow.png)
 
 </details>
