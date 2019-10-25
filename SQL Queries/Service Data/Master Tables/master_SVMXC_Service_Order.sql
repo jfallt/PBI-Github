@@ -14,7 +14,7 @@ SELECT s.Id
 	, s.[SVMX_PS_Filtration__c] as 'Filtration'
 	, s.[SVMX_PS_IP_Q_Number_Short__c] as 'SerialLabel'
 	, CAST(s.[SVMX_PS_Location_Zip__c] as TEXT) as Zip
-	, s.[SMAX_PS_Shed_Text__c] as 'Shed'
+	, s.Shed__c as ShedId
 	, s.[Account_Number__c] as 'Account Number'
 	, s.[Billable__c] as IsBillable
 	, CASE
