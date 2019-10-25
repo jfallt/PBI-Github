@@ -111,30 +111,22 @@ Each section below details each query used in the Service_Data.pbix file, with l
 Used as the basis for a report or a way to link different tables together for filtering purposes to ensure the correct data is shown.
 
 #### Report Bases
-* [master_MIF](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_MIF.sql)
-  * MIF or *Machines in Field*
-* [master_SVMXC_Service_Order](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_SVMXC_Service_Order.sql)
-  * All ServiceMax service orders
+| Query | Definition  |
+| ------------- | ------------- | 
+| [master_MIF](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_MIF.sql) | MIF or *Machines in Field* |
+| [master_SVMXC_Service_Order](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_SVMXC_Service_Order.sql) | All ServiceMax service orders |
   
  #### Master Filter Tables
-
-* [master_account](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_account.sql)
-  * Only includes accounts with SVMXC service orders
-* [master_filtration](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_filtration.sql)
-  * Distinct filters
-  * Categorized by RO (*Reverse Osmosis*) or Standard
-* [master_FSM_to_Market_Lookup](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_FSM_to_Market_Lookup.sql)
-  * Current Market assignments by FSM <Field Service Manager>
-  * Used to tie different tables together by Market (i.e. master_SVMXC_Service_Order and master_MIF)
-* [master_item](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_item.sql)
-  * Master Product List
-  * Joined with Product2Master to consolidate similar products with different productIDs
-* [master_location](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_location.sql)
-* [master_order_types](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_order_types.sql)
-  * All order types from SVMXC
-* [master_productFamily](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_productFamily.sql)
-* [master_sales_reps](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_sales_reps.sql)
-  * Sales reps on SVMXC orders
+| Query | Definition  |
+| ------------- | ------------- | 
+| [master_account](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_account.sql)| Only includes accounts with SVMXC service orders
+| [master_filtration](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_filtration.sql) | Distinct filters, categorized by RO (*Reverse Osmosis*) or Standard |
+| [master_FSM_to_Market_Lookup](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_FSM_to_Market_Lookup.sql) | Current Market assignments by FSM <Field Service Manager>, Used to tie different tables together by Market (i.e. master_SVMXC_Service_Order and master_MIF) |
+| [master_item](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_item.sql) | Master Product List, joined with Product2Master to consolidate similar products with different productIDs |
+| [master_location](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_location.sql) | Zip codes with current MIF count, latitude and longitude for GIS reporting |
+| [master_order_types](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_order_types.sql)| All order types from SVMXC |
+| [master_productFamily](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_productFamily.sql)| Use to filter reports using multiple tables with product family data |
+| [master_sales_reps](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Master%20Tables/master_sales_reps.sql)| Sales reps on SVMXC orders |
 
 </details>
 
@@ -142,24 +134,24 @@ Used as the basis for a report or a way to link different tables together for fi
 
 <details>
   <summary> MIF  </summary>
-
-* [MIF_Current_Installed_Products](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/MIF/MIF_Current_Installed_Products.sql)
-  * Not currently used for any reports
-* [MIF_Historic](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/MIF/MIF_Historic.sql)
-  * Counts by Market, Product Family
-* [MIF_Historic_PreConversion](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/MIF/MIF_Historic_PreConversion.sql)
-  * Counts by Market, Product Family
-  * Combined with the query above in PBI for complete MIF history
+  
+| Query | Definition  |
+| ------------- | ------------- | 
+| [MIF_Current_Installed_Products](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/MIF/MIF_Current_Installed_Products.sql) | Serial labels for installed products, mot currently used for any reports | 
+| [MIF_Historic](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/MIF/MIF_Historic.sql) | Counts by Market, Product Family | 
+|  [MIF_Historic_PreConversion](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/MIF/MIF_Historic_PreConversion.sql) | Counts by Market, Product Family, combined with the query above in PBI for complete MIF history | 
 </details>
 
 ### PMs
 <details>
   <summary> PMs  </summary>
-
-* [wo_PM_backlog_dbo](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PMs/wo_PM_backlog_dbo.sql)
-* [wo_PM_SVMXC_pm_backlog_count](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PMs/wo_SVMXC_pm_backlog_count.sql)
-* [wo_PM_SVMXC_pm_on_breakfix](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PMs/wo_SVMXC_pm_on_breakfix.sql)
-* [wo_PM_SVMXC_pm_creation_prediction](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PMs/wo_SVMXC_pm_creation_prediction.sql)
+  
+| Query | Definition  |
+| ------------- | ------------- | 
+| [wo_PM_backlog_dbo](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PMs/wo_PM_backlog_dbo.sql) | PM backlog from 2/28/2018 to 3/31/19, combined with query below in PBI for complete backlog history |
+| [wo_PM_SVMXC_pm_backlog_count](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PMs/wo_SVMXC_pm_backlog_count.sql) | Backlog from 4/30/19 to Date |
+| [wo_PM_SVMXC_pm_on_breakfix](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PMs/wo_SVMXC_pm_on_breakfix.sql) | WO Ids for breakfix pm counter resets (i.e. filter changes on breakfix) |
+| [wo_PM_SVMXC_pm_creation_prediction](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/PMs/wo_SVMXC_pm_creation_prediction.sql) | Shows current backlog, future PMs opening and projected PMs based on the date and frequency on each installed product |
  
 
 </details>
