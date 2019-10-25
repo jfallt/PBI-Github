@@ -33,11 +33,11 @@ SELECT s.Id
 	, s.[Resolution_Code__c] as 'Resolution Code'
 	, s.[Acquisition_Name__c] as 'Acquisition Name'
 	, s.[Problem_Code__c] as 'Problem Code'
-	, ISNULL(ISNULL(ISNULL(
-		s.[SMAX_PS_Region__c]
-		,q.[Service_Region__c])
-		,qs.[Service_Region__c])
-		,qs.Service_Team_Name__c) as 'Region1'
+	--, ISNULL(ISNULL(ISNULL(
+	--	s.[SMAX_PS_Region__c]
+	--	,q.[Service_Region__c])
+	--	,qs.[Service_Region__c])
+	--	,qs.Service_Team_Name__c) as 'Region1'
 	, s.[Market__c]
 	, [Submarket__c] as 'Submarket1'
 	, u.[Name] as 'Technician'
