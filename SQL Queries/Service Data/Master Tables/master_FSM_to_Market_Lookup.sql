@@ -18,10 +18,10 @@ FSMtoMarket AS
 			THEN 'Jose Ventura'
 
 			WHEN Market IN ('Boston-Cambridge-NH-VT')
-			THEN 'Curt Braverman'
-
-			WHEN Market IN ('Boston Suburbs-West-RI')
 			THEN 'Rich Delucia'
+
+			WHEN Market IN ('Boston Suburbs-West-RI', 'Hartford, CT')
+			THEN 'Curt Braverman'
 
 			WHEN Market = 'Los Angeles – Orange County'
 			THEN 'Eris Esparza'
