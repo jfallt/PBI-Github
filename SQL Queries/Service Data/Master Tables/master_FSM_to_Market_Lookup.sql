@@ -17,8 +17,11 @@ FSMtoMarket AS
 			WHEN Market IN ('Outer Boroughs, NY', 'White Plains, NY', 'Trenton, NJ')
 			THEN 'Jose Ventura'
 
-			WHEN Market IN ('Boston, MA', 'Hartford, CT')
-			THEN 'Curt Braverman & Rich Delucia'
+			WHEN Market IN ('Boston-Cambridge-NH-VT')
+			THEN 'Curt Braverman'
+
+			WHEN Market IN ('Boston Suburbs-West-RI')
+			THEN 'Rich Delucia'
 
 			WHEN Market = 'Los Angeles – Orange County'
 			THEN 'Eris Esparza'
@@ -68,10 +71,10 @@ FSMtoMarket AS
 			WHEN Market IN ('Houston, TX')
 			THEN 'Arthur Perez'
 
-			WHEN Market IN ('Austin, TX', 'San Antonio, TX', 'El Paso, TX', 'St. Louis, MO','Oklahoma City, OK')
+			WHEN Market IN ('Austin, TX', 'San Antonio, TX', 'El Paso, TX', 'St. Louis, MO')
 			THEN 'Jason Healy'
 
-			WHEN Market = 'Dallas, TX'
+			WHEN Market IN ('Dallas, TX', 'Oklahoma City, OK')
 			THEN 'Julio Curiel'
 
 			WHEN Market = 'Salt Lake City, UT'
@@ -100,7 +103,7 @@ CASE
 	WHEN FSM IN('Daryl Linville', 'Jason Healy', 'Julio Curiel', 'Mario Mendez', 'Ricky Smith', 'Steve Weisenberger', 'Arthur Perez')
 	THEN 'Central'
 
-	WHEN FSM IN('Curt Braverman & Rich Delucia', 'Jose Ventura', 'Waldy Negron')
+	WHEN FSM IN('Curt Braverman', 'Rich Delucia', 'Jose Ventura', 'Waldy Negron')
 	THEN 'Northeast'
 
 	WHEN FSM IN('Alan Parker', 'Alicia Jones', 'Thomas Kern', 'Daren Killingsworth', 'Keith Lloyd', 'Steve Hliwski', 'Toby Hopkins', 'Dale Hanks')
@@ -110,8 +113,7 @@ CASE
 	THEN 'West'
 
 	ELSE 'ROW'
-	END as 'Region',
-	ROW_NUMBER ()  OVER (ORDER BY Market)  as [Index]
+	END as 'Region'
 FROM FSMtoMarket
 )
 
