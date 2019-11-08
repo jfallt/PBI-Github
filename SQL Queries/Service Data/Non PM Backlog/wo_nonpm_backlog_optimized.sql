@@ -1,9 +1,9 @@
 SELECT COUNT(*) as RecordCount
 	,Market__c as Market
-	,asOfDate
-	,Install_Type
+	,asOfDate as AsOf
+	,Install_Type as InstallType
 	,[Availability]
-	,SVMXC__Order_Type__c as Order_Type
+	,SVMXC__Order_Type__c as OrderType
 FROM
 (
 	SELECT ss.Market__c
