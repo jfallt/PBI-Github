@@ -163,33 +163,9 @@ Used as the basis for a report or a way to link different tables together for fi
 
 ***
   
-Refers to any type of backlog that is not preventative maintenance such as installs, purchase installs, removals and repossessions.
-* The following queries are all combined into one table in PBI but are run separately to reduce the load on the database.
+Refers to backlog of installs, purchase installs, removals and repossessions.
 
-***
-
-* [wo_backlog_count_nonpm_dboHistory](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_backlog_count_nonpm_dboHistory.sql)
-  * Uses the dbo history table (for data before 2019/05/01)
- 
-#### Install and Removal Backlogs
-
----
-##### Project Installs (and Purchase Installs)
-* [wo_install_backlog_project_and_available](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_project_and_available.sql)
-* [wo_install_backlog_project_and_scheduled](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_project_and_scheduled.sql)
-* [wo_install_backlog_project_and_unavailable](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_project_and_unavailable.sql)
-
-##### Single Installs (and Purchase Installs)
-* [wo_install_backlog_single_and_available](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_single_and_available.sql)
-* [wo_install_backlog_single_and_scheduled](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_single_and_scheduled.sql)
-* [wo_install_backlog_single_and_unavailable](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_install_backlog_single_and_unavailable.sql)
----
-
-##### Removal (and Reposession) Backlog
-  * [wo_install_backlog_project_and_available](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_removal_backlog_available.sql)
-  * [wo_install_backlog_project_and_scheduled](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_removal_backlog_scheduled.sql)
-  * [wo_install_backlog_project_and_unavailable](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_removal_backlog_unavailable.sql)
- 
+* [Non PM Backlog](https://github.com/jfallt/Quench_PowerBI_Reporting/blob/master/SQL%20Queries/Service%20Data/Non%20PM%20Backlog/wo_nonpm_backlog.sql)
 
 </details>
 
@@ -200,7 +176,8 @@ Refers to any type of backlog that is not preventative maintenance such as insta
 
 ***
 
-1. These cannot be determined by calculated columns within PBI
+1. These are complex and cannot be determined by calculated columns within PBI
+1. Each attribute has its own query
 1. Each query has its own set of parameters defined below
 1. All abbreviations are defined above
 
