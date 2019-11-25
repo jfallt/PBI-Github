@@ -1,3 +1,21 @@
+DROP TABLE IF EXISTS #WO_WITHOUT_PRODUCTS
+
+CREATE TABLE #WO_WITHOUT_PRODUCTS
+	(
+		id VARCHAR(100),
+		SVMXC__Product__c VARCHAR(100)
+	)
+
+INSERT INTO #WO_WITHOUT_PRODUCTS
+SELECT DISTINCT so.id
+	,sip.SVMXC__Product__c
+FROM Temporal.SVMXCServiceOrder so
+LEFT JOIN Temporal.SVMXCInstalledProduct sip on sip.Q_Number__c = so.Scanned_Q_Number__c
+WHERE so.SVMXC__Product__c IS NULL
+AND SVMXC__Order_Status__c = 'Complete'
+AND sip.SVMXC__Status__c = 'Installed'
+
+
 SELECT s.Id
 	, s.[Name] as 'WorkOrder'
 	, DATEPART(Hour, (DATEADD(HOUR,-4,s.[CreatedDate]))) as 'CreatedDate (Hour)'
@@ -40,13 +58,17 @@ SELECT s.Id
 	--	,qs.Service_Team_Name__c) as 'Region1'
 	, s.[Market__c]
 	, [Submarket__c] as 'Submarket1'
-	, u.[Name] as 'Technician'
+	,SVMXC__Group_Member__c as TechID
+	--, u.[Name] as 'Technician'
 	--, t.[Name] as 'PrefTech'
 	, s.[Q_Number_In_c__c] as 'Q Number In'
 	, s.[Q_Number_Out__c] as 'Q Number Out'
 	, s.[Scanned_Q_Number__c] as 'Scanned Q Number'
 	, qs.[Service_Coverage__c] as 'ServiceCoverage1'
-	, ISNULL(ISNULL(s.[SVMXC__Product__c], SMAX_PS_Field_Add_Product__c), sip.[SVMXC__Product__c]) as 'ProductKey'
+	, --ISNULL(
+		ISNULL(ISNULL(s.[SVMXC__Product__c], SMAX_PS_Field_Add_Product__c), wop.SVMXC__Product__c)
+		--,sip.[SVMXC__Product__c])
+		as 'ProductKey'
 	, s.[Credit_Hold__c] as CreditHold
 	--,CASE
 	--	WHEN q.[Work_Order_Type__c] = '_RELO_IN'	THEN 'Relocation In'
@@ -93,10 +115,11 @@ SELECT s.Id
 		END as OrderTypeOverride
 	,SVMXC__Total_Billable_Amount__c as BillableAmount 
 FROM [Temporal].[SVMXCServiceOrder] s
-LEFT JOIN [Temporal].[SVMXCServiceGroupMembers] u on u.[Id] = s.[SVMXC__Group_Member__c]
+--LEFT JOIN [Temporal].[SVMXCServiceGroupMembers] u on u.[Id] = s.[SVMXC__Group_Member__c]
 --LEFT JOIN [Temporal].[SVMXCServiceGroupMembers] t on t.[Id] = s.[SVMXC__Preferred_Technician__c] -- if you need preferred technician, havent' found anything useful for it
 LEFT JOIN [Temporal].[QforceWorkOrder] q on q.Id = [qWork_Order__c]
 LEFT JOIN [Temporal].[QforceSite] qs on qs.Id = q.[Site__c]
-LEFT JOIN [Temporal].[SVMXCInstalledProduct] sip on sip.[Q_Number__c] = Scanned_Q_Number__c AND sip.SVMXC__Status__c = 'Active'
+LEFT JOIN #WO_WITHOUT_PRODUCTS wop on wop.id = s.id
+--LEFT JOIN [Temporal].[SVMXCInstalledProduct] sip on sip.[Q_Number__c] = Scanned_Q_Number__c AND sip.SVMXC__Status__c = 'Active'
 WHERE 1=1
 AND SVMXC__Order_Type__c IS NOT NULL
