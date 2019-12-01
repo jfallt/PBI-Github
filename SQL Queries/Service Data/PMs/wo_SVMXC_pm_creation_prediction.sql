@@ -21,7 +21,8 @@ with Sched_PMs as
 	  LEFT JOIN Temporal.SVMXCSite sSite on sSite.id =  sip.SVMXC__Site__c
     WHERE sip.SVMXC__Status__c = 'Installed'
 	  AND sip.name LIKE 'IP%'
-	  and sPMSched.[SVMXC__Scheduled_On__c] is not null) a
+	  AND sPMSched.[SVMXC__Scheduled_On__c] IS NOT NULL
+	  AND sPMDef.SVMXC__Frequency__c IS NOT NULL) a
 
 	-- NOTE:  this is hard coded to set look ahead window to one year (365 days) 
 	--        adjust as desired
