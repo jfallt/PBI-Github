@@ -17,16 +17,16 @@ FSMtoMarket AS
 			WHEN Market IN ('Outer Boroughs, NY', 'White Plains, NY', 'Trenton, NJ')
 			THEN 'Jose Ventura'
 
-			WHEN Market IN ('Boston-Cambridge-NH-VT')
+			WHEN Market IN ('Boston-Cambridge -NH-VT-ME')
 			THEN 'Rich Delucia'
 
 			WHEN Market IN ('Boston Suburbs-West-RI', 'Hartford, CT')
 			THEN 'Curt Braverman'
 
-			WHEN Market = 'Los Angeles – Orange County'
+			WHEN Market = 'Los Angeles - Orange County'
 			THEN 'Eris Esparza'
 
-			WHEN Market = 'San Diego- Bakersfield – Inland Empire'
+			WHEN Market = 'San Diego - Bakersfield - Inland Empire'
 			THEN 'Andrea De La Cruz'
 
 			WHEN Market IN ('Phoenix, AZ', 'Denver, CO', 'Tucson, AZ')
