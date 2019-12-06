@@ -6,7 +6,7 @@
 
 - [Overview](#overview)
   - [Goals of this repository](#goals-of-this-repository)
-  - [File and Query Detail](#file-and-query-detail)
+  - [Datasets and Query Details](#datasets-and-query-details)
   - [Golden Dataset Methodology](#golden-dataset-methodology)
     - [Golden Dataset Diagram](#golden-dataset-diagram)
 
