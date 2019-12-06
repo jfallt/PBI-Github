@@ -21,11 +21,14 @@
 * Scalability
 * Cross department communication
 
-### File and Query Detail
-* Service_Data.pbix
+### Datasets and Query Details
+* Service_Data
   * Main data model, feeds most of the reports in the Service Analytics app
-* Labor_Compliance.pbix
+* Labor_Compliance
   * Estimates hours worked per day based on gps trip data
+* Fleet Data
+  * efleet data
+  * telogis (gps telematics data)
 * [Query Details](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md)
 
 
