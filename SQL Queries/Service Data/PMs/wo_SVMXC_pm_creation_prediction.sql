@@ -75,6 +75,7 @@ SELECT COUNT(*) as PMs
 	, PM_Day
 	, CurrentStatus
 FROM Sched_PMs
+WHERE Next_PM < getdate()+730
 GROUP BY Market
 	, PM_Month
 	, PM_Year
