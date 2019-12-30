@@ -1,4 +1,4 @@
-# PowerBI Version Control :tada:
+# Quench Power BI Reporting :tada:
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -16,8 +16,7 @@
 
 ### Goals of this repository
 
-* Allow testing of new features and changes to data model without disrupting current reports
-* Documentation on all changes
+* Documentation
 * Scalability
 * Cross department communication
 
