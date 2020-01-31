@@ -218,12 +218,22 @@ Refers to backlog of installs, purchase installs, removals and repossessions.
  
  ## Collections Definitions
 
-## zuora_data.pbix memo:
+## zuora_data.pbix :money_with_wings:
 
 Each section below details each query used in the Service_Data.pbix file, with links to each query.
+
+<details>
+  <summary> Zuora Queries  </summary>
 
 
 | Query | Definition  |
 | ------------- | ------------- | 
-| [zuora_collections](https://github.com/jfallt/Quench_PowerBI_Reporting/blob/master/SQL%20Queries/Zuora%20Data/zuora_collections.sql) | pulls current state of invoices, assigns an aging bucket based on due date and determines if an invoice will roll during the quarter |
+| [zuora_invoices](https://github.com/jfallt/Quench_PowerBI_Reporting/blob/master/SQL%20Queries/Zuora%20Data/zuora_invoices.sql) | pulls current state of invoices, assigns an aging bucket based on due date and determines if an invoice will roll during the quarter |
+| [zuora_invoice history](https://github.com/jfallt/Quench_PowerBI_Reporting/blob/master/SQL%20Queries/Zuora%20Data/zuora_invoice_history.sql) | a temporary history table, querying zuora invoices at the beginning of each quarter |
+| [zuora_roll_plus_90_AR_history](https://github.com/jfallt/Quench_PowerBI_Reporting/blob/master/SQL%20Queries/Zuora%20Data/zuora_roll_plus_90_AR_history.sql) | Stores results of balance resolution for the current quarter on roll and 90 + AR |
+| [zuora_roll_total_balance_on_invoices_with_zero_balance](https://github.com/jfallt/Quench_PowerBI_Reporting/blob/master/SQL%20Queries/Zuora%20Data/zuora_roll_total_balance_on_invoices_with_zero_balance.sql) | Sums total initial balances on paid invoices, used for individual collections goals reporting |
+| [zuora_roll_total_balance_on_invoices_with_zero_balance_history](https://github.com/jfallt/Quench_PowerBI_Reporting/blob/master/SQL%20Queries/Zuora%20Data/zuora_roll_total_balance_on_invoices_with_zero_balance_history.sql) | a temporary history table, querying the above at the beginning of each quarter |
+| [zuora_collections_emails_sent](https://github.com/jfallt/Quench_PowerBI_Reporting/blob/master/SQL%20Queries/Zuora%20Data/zuora_collections_emails_sent.sql) | estimate of e-mails sent based on 90 days + due date |
 
+
+</details>
