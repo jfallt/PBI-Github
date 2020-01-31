@@ -4,7 +4,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [Definitions](#definitions)
+- [Service Definitions](#service-definitions)
   - [Install Types](#install-types)
     - [Order Availability :heavy_check_mark:](#order-availability-heavy_check_mark)
     - [Availability By Order Status](#availability-by-order-status)
@@ -21,6 +21,7 @@
   - [Non PM Backlog](#non-pm-backlog)
   - [WO Atttributes](#wo-atttributes)
   - [WO Lookup](#wo-lookup)
+- [zuora_data.pbix memo:](#zuora_datapbix-memo)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
