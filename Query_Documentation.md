@@ -24,7 +24,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Definitions
+## Service Definitions
 
 The following definitions are used when defining queries for various purposes.
 
@@ -214,5 +214,16 @@ Refers to backlog of installs, purchase installs, removals and repossessions.
 * [wo_lookup_problemcode_groups](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_problemcode_groups.sql)
 * [wo_lookup_rescode_groups](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_rescode_groups.sql)
  
+ </details>
+ 
+ ## Collections Definitions
 
-</details>
+## zuora_data.pbix memo:
+
+Each section below details each query used in the Service_Data.pbix file, with links to each query.
+
+
+| Query | Definition  |
+| ------------- | ------------- | 
+| [zuora_collections](https://github.com/jfallt/Quench_PowerBI_Reporting/blob/master/SQL%20Queries/Zuora%20Data/zuora_collections.sql) | pulls current state of invoices, assigns an aging bucket based on due date and determines if an invoice will roll during the quarter |
+
