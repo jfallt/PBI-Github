@@ -22,21 +22,24 @@
 
 ### Datasets and Query Details
 * Service_Data
-  * Main data model, feeds most of the reports in the Service Analytics app
+  * For service related reporting, feeds bulk of the reports in the Service Analytics app
+* Bevi_data
+  * Cleans and processes BEVI work orders, primarily for determining and forecasting truck rolls
 * Labor_Compliance
   * Estimates hours worked per day based on gps trip data
 * Fleet Data
   * efleet data
   * telogis (gps telematics data)
+* zuora_data
+  * Dataset for collections reporting
 * [Query Details](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md)
 
 
 ### Golden Dataset Methodology
 
 * The Service Analytics PBI environment uses a modified version of the [golden dataset](https://exceleratorbi.com.au/new-power-bi-reports-golden-dataset/)
-* Version history, commentary, and documentation are captured in this github repository
+* Version history, commentary, and documentation for queires are captured in this github repository
 * Additions, updates (optimizations etc.), and changes require a new branch and approval
-* .pbix files are re-published to web after branch is merged
 
 #### Golden Dataset Diagram
 <details>
