@@ -22,12 +22,16 @@
 
 ### Datasets and Query Details
 * Service_Data
-  * Main data model, feeds most of the reports in the Service Analytics app
+  * For service related reporting, feeds bulk of the reports in the Service Analytics app
+* Bevi_data
+  * Cleans and processes BEVI work orders, primarily for determining and forecasting truck rolls
 * Labor_Compliance
   * Estimates hours worked per day based on gps trip data
 * Fleet Data
   * efleet data
   * telogis (gps telematics data)
+* zuora_data
+  * Dataset for collections reporting
 * [Query Details](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md)
 
 
