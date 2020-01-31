@@ -11,8 +11,9 @@ with Sched_PMs as
 
 	SELECT
 	    sip.id as sip_id,
-		ISNULL(sSite.Market__c, sIP.Market__c)  as Market,
-		sPMSched.[SVMXC__Scheduled_On__c] as Next_PM,
+		ISNULL(sSite.Market__c, sIP.Market__c) as Market,
+		ISNULL(sSite.SVMXC__State__c, sIP.SVMXC__State__c) as [State],
+		sPMSched.SVMXC__Scheduled_On__c AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' as Next_PM,
 		sPMDef.SVMXC__Frequency__c 
 	FROM temporal.SVMXCInstalledProduct sIP
 	  LEFT JOIN Temporal.SVMXCPMPlan sPMP on sPMP.smax_ps_single_installed_product__c = sIP.id and sPMP.svmxc__status__c = 'active'
@@ -31,30 +32,31 @@ with Sched_PMs as
 Open_PMs AS	-- identify current open PMs, change date to month and year, roll up any PMs with a preferred start time before date into today
 (
 	SELECT CASE
-			WHEN SVMXC__Preferred_Start_Time__c < GETDATE()
+			WHEN SVMXC__Preferred_Start_Time__c AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' < GETDATE()
 			THEN MONTH(GETDATE())
-			ELSE MONTH(SVMXC__Preferred_Start_Time__c) 
+			ELSE MONTH(SVMXC__Preferred_Start_Time__c AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time') 
 		END as PM_Month
 		,CASE
-			WHEN SVMXC__Preferred_Start_Time__c < GETDATE()
+			WHEN SVMXC__Preferred_Start_Time__c AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' < GETDATE()
 			THEN YEAR(GETDATE())
-			ELSE YEAR(SVMXC__Preferred_Start_Time__c) 
+			ELSE YEAR(SVMXC__Preferred_Start_Time__c AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time') 
 		END as PM_Year
 		,CASE
-			WHEN SVMXC__Preferred_Start_Time__c < GETDATE()
+			WHEN SVMXC__Preferred_Start_Time__c AT TIME ZONE 'UTC' AT TIME ZONE 'Eastern Standard Time' < GETDATE()
 			THEN DAY(GETDATE())
 			ELSE 1 
 		END as PM_Day
 		,z.MSA_CSA__c as Market
+		,z.State__c as [State]
 		,CASE
 			WHEN SVMXC__Order_Status__c = 'Scheduled'
 			THEN 'Scheduled'
 			ELSE 'Open'
 		END as CurrentStatus
 	FROM Temporal.SVMXCServiceOrder so
-	LEFT JOIN Temporal.SVMXCSite ss on ss.Id = so.SVMXC__Site__c
-	LEFT JOIN Temporal.QforceSite qs on qs.Id = ss.qSite__c
-	LEFT JOIN Temporal.ZipCode z on z.Id = qs.zip_code__c
+		LEFT JOIN Temporal.SVMXCSite ss on ss.Id = so.SVMXC__Site__c
+		LEFT JOIN Temporal.QforceSite qs on qs.Id = ss.qSite__c
+		LEFT JOIN Temporal.ZipCode z on z.Id = qs.zip_code__c
 
 
 	WHERE SVMXC__Order_Type__c = 'PM' -- NOTE:  simplifieid where clause with same effective logic
@@ -69,30 +71,34 @@ Open_PMs AS	-- identify current open PMs, change date to month and year, roll up
  )
 
 SELECT COUNT(*) as PMs
-	, Market
-	, PM_Month
-	, PM_Year
-	, PM_Day
-	, CurrentStatus
+	,Market
+	,[State]
+	,PM_Month
+	,PM_Year
+	,PM_Day
+	,CurrentStatus
 FROM Sched_PMs
 WHERE Next_PM < getdate()+730
 GROUP BY Market
-	, PM_Month
-	, PM_Year
-	, PM_Day
-	, CurrentStatus
+	,[State]
+	,PM_Month
+	,PM_Year
+	,PM_Day
+	,CurrentStatus
 
 UNION ALL -- add current backlog of PMs
 
 SELECT COUNT(*) as PMs
-	, Market
-	, PM_Month
-	, PM_Year
-	, PM_Day
-	, CurrentStatus
+	,Market
+	,[State]
+	,PM_Month
+	,PM_Year
+	,PM_Day
+	,CurrentStatus
 FROM Open_PMs
 GROUP BY Market
-	, PM_Month
-	, PM_Year
-	, PM_Day
-	, CurrentStatus
+	,[State]
+	,PM_Month
+	,PM_Year
+	,PM_Day
+	,CurrentStatus
