@@ -6,7 +6,7 @@
 
 - [Service Definitions](#service-definitions)
   - [Install Types](#install-types)
-    - [Order Availability :heavy_check_mark:](#order-availability-heavy_check_mark)
+  - [Order Availability :heavy_check_mark:](#order-availability-heavy_check_mark)
     - [Availability By Order Status](#availability-by-order-status)
   - [Abbreviations](#abbreviations)
     - [Basic Terms](#basic-terms)
@@ -21,7 +21,8 @@
   - [Non PM Backlog](#non-pm-backlog)
   - [WO Atttributes](#wo-atttributes)
   - [WO Lookup](#wo-lookup)
-- [zuora_data.pbix memo:](#zuora_datapbix-memo)
+- [Collections Definitions](#collections-definitions)
+- [zuora_data.pbix :money_with_wings:](#zuora_datapbix-money_with_wings)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
