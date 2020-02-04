@@ -34,7 +34,7 @@ The following definitions are used when defining queries for various purposes.
 | Project |  Work orders with a project name in the column *SMAX_PS_Project_Name__c*. Used for large installs for companies such as Wal-Mart or Amazon
 | Single |  All others are denoted as "Single" Installs |
 
-#### Order Availability :heavy_check_mark:
+### Order Availability :heavy_check_mark:
 
 <details>
   <summary> Definition Below  </summary>
@@ -216,7 +216,7 @@ Refers to backlog of installs, purchase installs, removals and repossessions.
  
  </details>
  
- ## Collections Definitions
+## Collections Definitions
 
 ## zuora_data.pbix :money_with_wings:
 
