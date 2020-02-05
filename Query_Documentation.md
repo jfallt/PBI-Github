@@ -158,7 +158,7 @@ Used as the basis for a report or a way to link different tables together for fi
 ### Non PM Backlog
 
 <details>
-  <summary>  Definition Below </summary>
+  <summary>  Query and Definition Below </summary>
   
 Refers to backlog of installs, purchase installs, removals and repossessions.
 
@@ -169,7 +169,7 @@ Refers to backlog of installs, purchase installs, removals and repossessions.
 ### WO Atttributes
 
 <details>
-  <summary> Definition Belows </summary>
+  <summary> Queries and Definitions Below </summary>
 
 1. These are complex calculations and cannot be determined using calculated columns within PBI
 1. Each attribute has its own query
