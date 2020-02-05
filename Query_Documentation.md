@@ -39,7 +39,7 @@ The following definitions are used when defining queries for various purposes.
 ### Order Availability :heavy_check_mark:
 
 <details>
-  <summary> Definition Below  </summary>
+  <summary> Definitions Below  </summary>
   
 ***
 
@@ -104,7 +104,7 @@ Each section below details each query used in the Service_Data.pbix file, with l
 ### Master Tables
 
 <details>
-  <summary> Queries and Definitions Below </summary>
+  <summary> Queries & Definitions Below </summary>
  
 ***
 Used as the basis for a report or a way to link different tables together for filtering purposes to ensure the correct data is shown.
@@ -132,7 +132,7 @@ Used as the basis for a report or a way to link different tables together for fi
 ### MIF
 
 <details>
-  <summary> Queries and Definitions Below </summary>
+  <summary> Queries & Definitions Below </summary>
   
 | Query | Definition  |
 | ------------- | ------------- | 
@@ -143,7 +143,7 @@ Used as the basis for a report or a way to link different tables together for fi
 
 ### PMs
 <details>
-  <summary> Queries and Definitions Below </summary>
+  <summary> Queries & Definitions Below </summary>
   
 | Query | Definition  |
 | ------------- | ------------- | 
@@ -169,7 +169,7 @@ Refers to backlog of installs, purchase installs, removals and repossessions.
 ### WO Atttributes
 
 <details>
-  <summary> Queries and Definitions Below </summary>
+  <summary> Queries & Definitions Below </summary>
 
 1. These are complex calculations and cannot be determined using calculated columns within PBI
 1. Each attribute has its own query
@@ -191,9 +191,9 @@ Refers to backlog of installs, purchase installs, removals and repossessions.
 ### WO Lookup
 
 <details>
-  <summary> Definitions Below </summary>
+  <summary> Queries & Definitions Below </summary>
 
-Lookup tables are used within power bi to filter across two different tables and/or bucket categories.
+Lookup tables are used within power bi to filter across two different tables/or bucket categories.
 
 ***
 
@@ -221,7 +221,7 @@ Lookup tables are used within power bi to filter across two different tables and
 Each section below details each query used in the Service_Data.pbix file, with links to each query.
 
 <details>
-  <summary> Zuora Queries  </summary>
+  <summary> Queries & Definitions Below  </summary>
 
 
 | Query | Definition  |
