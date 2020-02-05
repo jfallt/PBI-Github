@@ -104,7 +104,7 @@ Each section below details each query used in the Service_Data.pbix file, with l
 ### Master Tables
 
 <details>
-  <summary> Master Tables  </summary>
+  <summary> Queries and Definitions Below </summary>
  
 ***
 Used as the basis for a report or a way to link different tables together for filtering purposes to ensure the correct data is shown.
@@ -132,18 +132,18 @@ Used as the basis for a report or a way to link different tables together for fi
 ### MIF
 
 <details>
-  <summary> MIF  </summary>
+  <summary> Queries and Definitions Below </summary>
   
 | Query | Definition  |
 | ------------- | ------------- | 
-| [MIF_Current_Installed_Products](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/MIF/MIF_Current_Installed_Products.sql) | Serial labels for installed products, mot currently used for any reports | 
+| [MIF_Current_Installed_Products](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/MIF/MIF_Current_Installed_Products.sql) | Serial labels for installed products, PM schedules for each installed product were added for ROW/TTP trip planning | 
 | [MIF_Historic](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/MIF/MIF_Historic.sql) | Counts by Market, Product Family | 
 |  [MIF_Historic_PreConversion](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/MIF/MIF_Historic_PreConversion.sql) | Counts by Market, Product Family, combined with the query above in PBI for complete MIF history | 
 </details>
 
 ### PMs
 <details>
-  <summary> PMs  </summary>
+  <summary> Queries and Definitions Below </summary>
   
 | Query | Definition  |
 | ------------- | ------------- | 
@@ -158,9 +158,7 @@ Used as the basis for a report or a way to link different tables together for fi
 ### Non PM Backlog
 
 <details>
-  <summary> Non PM Backlog  </summary>
-
-***
+  <summary>  Definition Below </summary>
   
 Refers to backlog of installs, purchase installs, removals and repossessions.
 
@@ -171,56 +169,53 @@ Refers to backlog of installs, purchase installs, removals and repossessions.
 ### WO Atttributes
 
 <details>
-  <summary> WO Attributes  </summary>
+  <summary> Definition Belows </summary>
 
-***
-
-1. These are complex and cannot be determined by calculated columns within PBI
+1. These are complex calculations and cannot be determined using calculated columns within PBI
 1. Each attribute has its own query
 1. Each query has its own set of parameters defined below
 1. All abbreviations are defined above
 
-* [wo_ftf_by_tech](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_ftf_by_tech.sql)
-  * When a technician selected "Additional Work Required", this query pulls the first row containing the following:
-      * Resolution Code
-      * Technician
-      * Time
-* [wo_labor_days](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_labor_days.sql)
-  * Uses labor transactions as another way to determine if a work order was an FTF (i.e. 2 visits is not an FTF)
-* [wo_reschedules](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_reschedules.sql)
-  * Identify distinct scheduled dates (anything with 2 or more has n - 1 reschedules)
-  * First scheduled date
-  * Final scheduled date
-* [wo_svmxc_order_history](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_svmxc_order_history.sql)
-  * Time in status
-  * Used for Install SLA times
-  * This is a part of the Temporal.SVMXCServiceOrder table but is pulled in separately to filter cancelled work orders to reduce data load
-* [wo_work_order_line](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_work_order_line.sql)
-  * Aggregates cost by category
-    * Parts
-    * Tubing
-    * Machines
-    * Labor
-    * Filters
+***
+
+| Query | Definition  |
+| ------------- | ------------- | 
+| [wo_ftf_by_tech](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_ftf_by_tech.sql) | When a technician selected "Additional Work Required" in the field status, this query pulls the work order id, resolution code, technician, and time |
+| [wo_labor_days](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_labor_days.sql) | Uses labor transactions as another way to determine if a work order was an FTF (i.e. 2 visits is not an FTF) |
+| [wo_reschedules](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_reschedules.sql) |  Identify distinct scheduled dates (anything with 2 or more has n - 1 reschedules), First scheduled date, & Final scheduled date |
+| [wo_svmxc_order_history](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_svmxc_order_history.sql) |  Pulls time in each order status, was used for install department time analysis, this is a part of the Temporal.SVMXCServiceOrder table but is pulled in separately to filter cancelled work orders to reduce data load|
+| [wo_work_order_line](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Attributes/wo_work_order_line.sql)| Aggregates costs per category (parts, tubing, machines, labor, & filters)|
 
 </details>
 
 ### WO Lookup
 
 <details>
-  <summary> WO Lookup </summary>
+  <summary> Definitions Below </summary>
 
-* [wo_lookup_availability_and_group](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_availability_and_group.sql)
-  * Availability was [defined above](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#install-types)
-* [wo_lookup_pm_slas](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_pm_slas.sql)
-* [wo_lookup_problemcode_groups](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_problemcode_groups.sql)
-* [wo_lookup_rescode_groups](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_rescode_groups.sql)
- 
+Lookup tables are used within power bi to filter across two different tables and/or bucket categories.
+
+***
+
+| Query | Definition  |
+| ------------- | ------------- | 
+| [wo_lookup_availability_and_group](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_availability_and_group.sql) | Buckets each order status based on its availability, which was [defined above](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md#install-types) |
+| [wo_lookup_problemcode_groups](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_problemcode_groups.sql) | Assigns a bucket to each problem code for the Problem Codes tab on the Break/Fix response report |
+| [wo_lookup_rescode_groups](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_rescode_groups.sql) | Resolution codes can apply to either a completed work order or a work order in "Additional Work Required." This query buckets each code into "Resolution" or "Additional Work Required"  |
+| [wo_lookup_pm_slas](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_pm_slas.sql) | Deprecated (Fall 2019): Originally defined with the purpose of adjusting the due date of a pm depending on their SLA package. |
+
  </details>
  
-## Collections Definitions
+## Collections Definitions & Abbreviations
 
-## zuora_data.pbix :money_with_wings:
+### Basic Terms
+| Term  | Definition |
+| :------| :---|
+| Roll |  If an invoice is going to move past the 90 days overdue bucket within the quarter
+| Billings | Initial total balance on an invoice
+| AR |  Accounts Receivable  |
+
+## zuora_data.pbix Queries :money_with_wings:
 
 Each section below details each query used in the Service_Data.pbix file, with links to each query.
 
@@ -235,7 +230,7 @@ Each section below details each query used in the Service_Data.pbix file, with l
 | [zuora_roll_plus_90_AR_history](https://github.com/jfallt/Quench_PowerBI_Reporting/blob/master/SQL%20Queries/Zuora%20Data/zuora_roll_plus_90_AR_history.sql) | Stores results of balance resolution for the current quarter on roll and 90 + AR |
 | [zuora_roll_total_balance_on_invoices_with_zero_balance](https://github.com/jfallt/Quench_PowerBI_Reporting/blob/master/SQL%20Queries/Zuora%20Data/zuora_roll_total_balance_on_invoices_with_zero_balance.sql) | Sums total initial balances on paid invoices, used for individual collections goals reporting |
 | [zuora_roll_total_balance_on_invoices_with_zero_balance_history](https://github.com/jfallt/Quench_PowerBI_Reporting/blob/master/SQL%20Queries/Zuora%20Data/zuora_roll_total_balance_on_invoices_with_zero_balance_history.sql) | a temporary history table, querying the above at the beginning of each quarter |
-| [zuora_collections_emails_sent](https://github.com/jfallt/Quench_PowerBI_Reporting/blob/master/SQL%20Queries/Zuora%20Data/zuora_collections_emails_sent.sql) | estimate of e-mails sent based on 90 days + due date |
+| [zuora_collections_emails_sent](https://github.com/jfallt/Quench_PowerBI_Reporting/blob/master/SQL%20Queries/Zuora%20Data/zuora_collections_emails_sent.sql) | estimate of e-mails sent based on 90 days + due date and if the invoice has not been paid |
 
 
 </details>
