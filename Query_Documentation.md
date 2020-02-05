@@ -193,7 +193,8 @@ Refers to backlog of installs, purchase installs, removals and repossessions.
 <details>
   <summary> Queries & Definitions Below </summary>
 
-Lookup tables are used within power bi to filter across two different tables/or bucket categories.
+
+Lookup tables are used within power bi to filter across two different tables and/or bucket categories.
 
 ***
 
