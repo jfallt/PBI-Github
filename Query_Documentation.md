@@ -21,8 +21,8 @@
   - [Non PM Backlog](#non-pm-backlog)
   - [WO Atttributes](#wo-atttributes)
   - [WO Lookup](#wo-lookup)
-- [Collections Definitions](#collections-definitions)
-- [zuora_data.pbix :money_with_wings:](#zuora_datapbix-money_with_wings)
+  - [Basic Terms](#basic-terms-1)
+- [zuora_data.pbix Queries :money_with_wings:](#zuora_datapbix-queries-money_with_wings)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
