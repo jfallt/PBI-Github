@@ -205,7 +205,8 @@ Lookup tables are used within power bi to filter across two different tables and
 | [wo_lookup_pm_slas](https://github.com/jfallt/PBI-Github/blob/master/SQL%20Queries/Service%20Data/WO%20Lookup/wo_lookup_pm_slas.sql) | Deprecated (Fall 2019): Originally defined with the purpose of adjusting the due date of a pm depending on their SLA package. |
 
  </details>
- 
+
+
 ## Collections Definitions & Abbreviations
 
 ### Basic Terms
