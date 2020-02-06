@@ -34,6 +34,12 @@
   * Dataset for collections reporting
 * [Query Details](https://github.com/jfallt/PBI-Github/blob/master/Query_Documentation.md)
 
+### Data Dictionaries
+* Created using [tabular editor](https://github.com/otykier/TabularEditor)
+* All tables, columns, and measures are given descriptors
+    * These descriptors populate the data dictionary
+* This is incredibly important for others to understand the processes and for them to have a reference when they have questions
+* Each PowerBI dataset will have one
 
 ### Golden Dataset Methodology
 
