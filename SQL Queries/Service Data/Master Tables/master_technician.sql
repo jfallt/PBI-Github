@@ -63,7 +63,6 @@ VALUES ('a', 'Abbott, Francis', 'Technician', 'Southeast', 'Philadelphia, PA', '
 ;WITH Markets AS
 ( SELECT DISTINCT MSA_CSA__c FROM temporal.ZipCode)
 
-
 SELECT m.id
 	,m.[Name]
 	,m.[SVMXC__Role__c] as 'Role'
@@ -84,14 +83,14 @@ SELECT m.id
 	,s.[SVMXC__State__c] as 'Inventory State'
 	,m.[SVMXC__Active__c] as 'Active'
 	,m.[Hire_Date__c] as 'Hire Date'
-	,ISNULL(ISNULL(m.[SVMXC__Email__c], f.Email)
+	,ISNULL(m.[SVMXC__Email__c] 
 		,REPLACE(
 			LOWER(
 				CONCAT(
-					TRIM(SUBSTRING(s.Name
-								,LEN(LEFT(s.Name, CHARINDEX(',', s.Name))) + 1, 2) -- first letter of first name
+					TRIM(SUBSTRING(m.Name
+								,LEN(LEFT(m.Name, CHARINDEX(',', m.Name))) + 1, 2) -- first letter of first name
 						)
-						,LEFT(s.Name, (CHARINDEX(',', s.Name))) -- last name
+						,LEFT(m.Name, (CHARINDEX(',', m.Name))) -- last name
 						,'quenchonline.com' -- email address
 						)
 				)
@@ -107,4 +106,3 @@ FROM [Temporal].[SVMXCServiceGroupMembers] m
 UNION ALL
 
 SELECT * FROM #TechManualAdd
-
