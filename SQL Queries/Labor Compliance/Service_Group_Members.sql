@@ -17,7 +17,18 @@ INSERT INTO #TechManualAdd (Service_Member_Name) VALUES ('Huling, Alexander'), (
 														, ('Turano, Chris')
 
 SELECT s.Name as Service_Member_Name
-	,s.SVMXC__Email__c as Service_Member_Email
+	,ISNULL(s.SVMXC__Email__c,
+    REPLACE(
+		LOWER(
+			CONCAT(
+				TRIM(SUBSTRING(s.Name
+							,LEN(LEFT(s.Name, CHARINDEX(',', s.Name))) + 1, 2) -- first letter of first name
+					)
+					,LEFT(s.Name, (CHARINDEX(',', s.Name))) -- last name
+					,'quenchonline.com' -- email address
+					)
+			)
+			, ',', '@')) as Service_Member_Email -- replace comma with @ for email format
 	,s.SVMXC__Role__c as Role
 	,s.Hire_Date__c as Hire_Date
 	,s.Region__c as Region
