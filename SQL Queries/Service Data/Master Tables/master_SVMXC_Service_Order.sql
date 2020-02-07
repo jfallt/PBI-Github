@@ -40,6 +40,7 @@ SELECT s.Id
 	,s.SVMX_PS_Filtration__c as 'Filtration'
 	,s.SVMX_PS_IP_Q_Number_Short__c as 'SerialLabel'
 	,CAST(s.SVMX_PS_Location_Zip__c as TEXT) as Zip
+	,zip_code__c as zip_id
 	,s.Shed__c as ShedId
 	,s.Account_Number__c as 'Account Number'
 	,s.Billable__c as IsBillable
