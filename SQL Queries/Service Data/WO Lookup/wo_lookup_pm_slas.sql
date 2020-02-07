@@ -1,21 +1,13 @@
-SELECT 'Food Service' as 'SLA Package', 30 as 'SLA (Days)'
+DROP TABLE IF EXISTS #pm_slas
 
-UNION
+CREATE TABLE #pm_slas (sla_package nvarchar (MAX)
+                      ,Days int)
+INSERT INTO #pm_slas
+VALUES ('Food Service', 30)
+      ,('Platinum', 30)
+      ,('Gold', 60)
+      ,('Silver', 90)
+      ,('Bronze', 90)
+      ,('Unknown', 60)
 
-SELECT 'Platinum', 30
-
-UNION
-
-SELECT 'Gold', 60
-
-UNION
-
-SELECT 'Silver', 90
-
-UNION
-
-SELECT 'Bronze', 90
-
-UNION
-
-SELECT 'Unknown', 60
+SELECT * FROM #pm_slas
