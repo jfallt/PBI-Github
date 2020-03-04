@@ -19,7 +19,7 @@ SELECT *
 	End as SLA_Category
 FROM
 (SELECT p2.Id
-	,ISNULL([Item Master (Proposed New Product Name) (Value)], p2.Name) as Name
+	,ISNULL(sc.Name, p2.Name) as Name
 	,p2.Description
 	,p2.Family
 	,sc.Sub_Category__c as Sub_Category
@@ -35,6 +35,5 @@ FROM
 	THEN '30'
 	ELSE sc.lead_time__c END as Lead_Time
 	FROM dbo.Product2 p2
-LEFT JOIN dbo.[Products2ToItemMaster] p2m on p2.id = p2m.[Product Id]
-LEFT JOIN DRP_FF_Test.Items_v i on i.SFId = p2.Integration_SCM_Item_External_Id__c
-LEFT JOIN [Temporal].[SCMCItem] sc on sc.Id = Integration_SCM_Item_External_Id__c) a
+		LEFT JOIN DRP_FF_Test.Items_v i on i.SFId = p2.Integration_SCM_Item_External_Id__c
+		LEFT JOIN [Temporal].[SCMCItem] sc on sc.Id = Integration_SCM_Item_External_Id__c) a
