@@ -11,19 +11,19 @@ CREATE TABLE #FSMs
 		Region VARCHAR(100)
 	)
 
-INSERT INTO #FSMs (Service_Member_Name, Region) VALUES ('Negron, Waldy ', 'NE'), ('Marte, Jose ', 'NE')
-														, ('Delucia, Rich', 'NE'), ('Braverman, Curt', 'NE')
-														, ('Hanks, Dale', 'SE'), ('Killingsworth, Daren', 'SE')
-														, ('Jones, Alicia', 'SE'),('Parker, Alan', 'SE')
-														, ('Kern, Thomas', 'SE'), ('Hliwski, Steve', 'NE')
-														, ('Hopkins, Toby', 'SE'), ('Lloyd, Keith', 'SE')
-														, ('Curiel, Julio', 'C'), ('Weisenberger, Steve', 'C')
-														, ('Mendez, Mario', 'C'), ('Linville, Daryl', 'C')
-														, ('Perez, Arthur', 'C'), ('Healy, Jason', 'C')
-														, ('Smith, Ricky', 'C'), ('Esparza, Eris', 'W')
-														, ('Open_FSM', 'W'), ('Harber, James', 'W')
-														, ('Duenas, Atilio', 'W'), ('Gonzales, Rudy', 'W')
-														, ('Lewis, Rick', 'W')
+INSERT INTO #FSMs (Service_Member_Name, Region) VALUES ('Negron, Waldy ', 'NE'),	('Marte, Jose ', 'NE')
+														,('Delucia, Rich', 'NE'),	('Braverman, Curt', 'NE')
+														,('Hanks, Dale', 'SE'),		('Killingsworth, Daren', 'SE')
+														,('Jones, Alicia', 'SE'),	('Parker, Alan', 'SE')
+														,('Kern, Thomas', 'SE'),	('Hliwski, Steve', 'NE')
+														,('Hopkins, Toby', 'SE'),	('Lloyd, Keith', 'SE')
+														,('Curiel, Julio', 'C'), 	('Weisenberger, Steve', 'C')
+														,('Mendez, Mario', 'C'),	('Linville, Daryl', 'C')
+														,('Perez, Arthur', 'C'), 	('Healy, Jason', 'C')
+														,('Smith, Ricky', 'C'), 	('Esparza, Eris', 'W')
+														,('Open_FSM', 'W'), 		('Harber, James', 'W')
+														,('Duenas, Atilio', 'W'), 	('Gonzales, Rudy', 'W')
+														,('Lewis, Rick', 'W'), 		('Meagher, Scott', 'NE')
 
 CREATE TABLE #Region
 	(
@@ -42,8 +42,8 @@ FROM #FSMs
 
 (
 	SELECT DISTINCT
-	[MSA_CSA__c] as 'Market'
-	FROM [Temporal].[ZipCode]
+	MSA_CSA__c as 'Market'
+	FROM Temporal.ZipCode
 ),
 
 FSMtoMarket AS
@@ -57,8 +57,10 @@ FSMtoMarket AS
 			THEN (SELECT Service_Member_Name FROM #FSM2 WHERE id = 2)
 			WHEN Market IN ('Boston-Cambridge -NH-VT-ME')
 			THEN (SELECT Service_Member_Name FROM #FSM2 WHERE id = 3)
-			WHEN Market IN ('Boston Suburbs-West-RI', 'Hartford, CT', 'Syracuse, NY')
+			WHEN Market IN ('Boston Suburbs-West-RI', 'Syracuse, NY')
 			THEN (SELECT Service_Member_Name FROM #FSM2 WHERE id = 4)
+			WHEN Market IN ('Hartford, CT')
+			THEN (SELECT Service_Member_Name FROM #FSM2 WHERE id = 26)
 			WHEN Market IN ('Los Angeles - Orange County', 'San Diego - Bakersfield - Inland Empire')
 			THEN (SELECT Service_Member_Name FROM #FSM2 WHERE id = 20)
 			WHEN Market IN ('Phoenix, AZ', 'Denver, CO', 'Tucson, AZ')
@@ -115,9 +117,9 @@ SELECT COUNT(*) as Tech_Count
 FROM
 	(SELECT CASE WHEN Service_Market__c = 'Boston-Cambridge-NH-VT'
 		THEN 'Boston-Cambridge -NH-VT-ME'
-		WHEN Service_Market__c = 'San Diego- Bakersfield – Inland Empire'
+		WHEN Service_Market__c = 'San Diego- Bakersfield ï¿½ Inland Empire'
 		THEN 'San Diego - Bakersfield - Inland Empire'
-		WHEN Service_Market__c = 'Los Angeles – Orange County'
+		WHEN Service_Market__c = 'Los Angeles ï¿½ Orange County'
 		THEN 'Los Angeles - Orange County'
 		ELSE Service_Market__c
 		END as Market
@@ -138,7 +140,7 @@ SELECT FSM
 	,ISNULL(r.Region, 'ROW') as Region
 	,ISNULL(n.Tech_Count,0) as ActiveTechs
 FROM FSMtoMarket f2m
-LEFT JOIN #FSM2 f on f.Service_Member_Name = f2m.FSM
-LEFT JOIN #Region r on r.Region_Key = f.Region
-LEFT JOIN NumberofTechs n on n.Market = f2m.Market
+	LEFT JOIN #FSM2 f on f.Service_Member_Name = f2m.FSM
+	LEFT JOIN #Region r on r.Region_Key = f.Region
+	LEFT JOIN NumberofTechs n on n.Market = f2m.Market
 
