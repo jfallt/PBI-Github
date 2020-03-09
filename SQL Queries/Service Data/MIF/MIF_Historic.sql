@@ -1,28 +1,24 @@
-SELECT SUM(Quantity) as Quantity
-	, ProductFamily
-	, Market
-	, asofdate
-	, SubscriptionType
-FROM 
-(	select CASE
-		WHEN ProductFamily IN ('Boston Board System', 'Boston Filter', 'Boston Small RO', 'Parts', 'Filter', 'Tank')
-		THEN 'Water'
-		WHEN ProductFamily IN ('Water', 'Sparkling', 'Ice', 'Coffee')
-		THEN ProductFamily
-		ELSE 'Other'
-		End as 'ProductFamily'
-		, r.entry_quantity__c as Quantity
-		, ISNULL(z.MSA_CSA__c, s.[Market__c]) as Market
-		, r.asofdate
-		,SubscriptionEnhancedType as SubscriptionType
-	from [Reporting].[QForceSubscriptionFinancialAndContractual_MonthlyAndCurrent] r
-	LEFT JOIN temporal.zipcode z on z.Id = r.PostalCodeID
-	LEFT JOIN [Temporal].[QforceSite] s on s.[Id] = r.[SiteID]
-	AND r.SubscriptionEnhancedType IN ('Maintenance', 'Rental')
-	AND r.entry_quantity__c > 0
-	) a
-GROUP BY
-	ProductFamily,
-	SubscriptionType,
-	Market,
-	asofdate
+select SUM(Quantity) as Quantity
+	,ProductID
+	,Market
+	,asofdate
+	,SubscriptionType
+	,[Status]
+from
+(   SELECT r.asofdate
+        ,r.qforceEffectiveStatus as [Status]
+        ,r.qforceEffectiveSubscriptionType as SubscriptionType
+        ,z.MSA_CSA__c as Market
+        ,r.MIF as Quantity
+        ,r.productid as ProductId
+    FROM Reporting.CoreMetricsMonthlyAndCurrent_v r
+        INNER JOIN temporal.zipcode z on z.Id = r.PostalCodeID
+    WHERE r.qforceEffectiveStatus  <> 'Cancelled'
+        AND asofdate >= '2018-01-01'
+        AND qforceEffectiveSubscriptionType IN ('Maintenance', 'Rental')
+) a
+group by ProductID
+	,Market
+	,asofdate
+	,SubscriptionType
+	,[Status]
