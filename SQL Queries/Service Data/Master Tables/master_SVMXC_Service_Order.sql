@@ -39,10 +39,9 @@ SELECT s.Id
 	,s.SVMXC__Order_Status__c as 'Order Status'
 	,s.SVMX_PS_Filtration__c as 'Filtration'
 	,s.SVMX_PS_IP_Q_Number_Short__c as 'SerialLabel'
-	,CAST(s.SVMX_PS_Location_Zip__c as TEXT) as Zip
 	,zip_code__c as zip_id
 	,s.Shed__c as ShedId
-	,s.Account_Number__c as 'Account Number'
+	,s.svmxc__company__c as account_id
 	,s.Billable__c as IsBillable
 	,CASE
 		WHEN qSLA_Package__c LIKE '%Gold%'
@@ -60,13 +59,10 @@ SELECT s.Id
 	,s.Resolution_Code__c as 'Resolution Code'
 	,s.Acquisition_Name__c as 'Acquisition Name'
 	,s.Problem_Code__c as 'Problem Code'
-	,s.Market__c
-	,Submarket__c as 'Submarket1'
 	,SVMXC__Group_Member__c as TechID
 	,s.Q_Number_In_c__c as 'Q Number In'
 	,s.Q_Number_Out__c as 'Q Number Out'
 	,s.Scanned_Q_Number__c as 'Scanned Q Number'
-	,qs.Service_Coverage__c as 'ServiceCoverage1'
 	,--ISNULL(
 		ISNULL(s.SVMXC__Product__c, SMAX_PS_Field_Add_Product__c)--, wop.SVMXC__Product__c)
 		--,sip.SVMXC__Product__c)
@@ -120,7 +116,8 @@ SELECT s.Id
 		ELSE NULL
 	END as OrderTypeOverride
 	,SVMXC__Total_Billable_Amount__c as BillableAmount
-	,SVMXC__State__c as [State]
+	,s.Market__c as Market
+	,qs.Service_Coverage__c as 'Service Coverage'
 FROM Temporal.SVMXCServiceOrder s
 	LEFT JOIN Temporal.QforceWorkOrder q on q.Id = qWork_Order__c
 	LEFT JOIN Temporal.QforceSite qs on qs.Id = q.Site__c

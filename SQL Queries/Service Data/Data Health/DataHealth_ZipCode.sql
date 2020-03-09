@@ -1,6 +1,30 @@
-/*The purpose of this query is to match current FSMs to their markets and those markets to regions
-and add the number of active technicians in the market */
+/* Identify zip codes in ROW markets with non-ROW submarkets */
+SELECT zc.Name as ZipCode
+	,MSA_CSA__c as Market
+	,Submarket__c as Submarket
+	,zc.Region__c as Region
+	,sg.Name as Technician
+	,zc.City__c as City
+	,zc.State__c as State
+FROM Temporal.ZipCode zc
+	LEFT JOIN Temporal.SVMXCServiceGroupMembers sg on sg.Id = zc.Technician__c
+WHERE MSA_CSA__c = 'ROW'
+	AND Submarket__c NOT IN ('Canada', 'NULL', 'San Juan, PR', 'OutSourced', 'ROW')
 
+/* Identify zip codes in markets without assigned submarkets, excluding ROW & Outsourced*/
+SELECT zc.Name as ZipCode
+	,MSA_CSA__c as Market
+	,sg.Name as Technician
+	,zc.Region__c as Region
+	,zc.City__c as City
+	,zc.State__c as State
+FROM Temporal.ZipCode zc
+	LEFT JOIN Temporal.SVMXCServiceGroupMembers sg on sg.Id = zc.Technician__c
+WHERE Submarket__c IS NULL
+	AND MSA_CSA__c NOT IN ('ROW', 'Outsourced')
+
+
+/* Identify zip codes in markets with incorrectly assigned regions using FSM to Market query*/
 DROP TABLE IF EXISTS #FSMs
 DROP TABLE IF EXISTS #FSM2
 DROP TABLE IF EXISTS #Region
@@ -11,20 +35,19 @@ CREATE TABLE #FSMs
 		Region VARCHAR(100)
 	)
 
-INSERT INTO #FSMs (Service_Member_Name, Region) VALUES ('Negron, Waldy ', 'NE'),	('Marte, Jose ', 'NE')
-														,('Delucia, Rich', 'NE'),	('Braverman, Curt', 'NE')
-														,('Hanks, Dale', 'SE'),		('Killingsworth, Daren', 'SE')
-														,('Jones, Alicia', 'SE'),	('Parker, Alan', 'SE')
-														,('Kern, Thomas', 'SE'),	('Hliwski, Steve', 'NE')
-														,('Hopkins, Toby', 'SE'),	('Lloyd, Keith', 'SE')
-														,('Curiel, Julio', 'C'), 	('Weisenberger, Steve', 'C')
-														,('Mendez, Mario', 'C'),	('Linville, Daryl', 'C')
-														,('Perez, Arthur', 'C'), 	('Healy, Jason', 'C')
-														,('Smith, Ricky', 'C'), 	('Esparza, Eris', 'W')
-														,('Open_FSM', 'W'), 		('Harber, James', 'W')
-														,('Duenas, Atilio', 'W'), 	('Gonzales, Rudy', 'W')
-														,('Lewis, Rick', 'W'), 		('Meagher, Scott', 'NE')
-
+INSERT INTO #FSMs (Service_Member_Name, Region) VALUES ('Negron, Waldy ', 'NE'), ('Marte, Jose ', 'NE')
+														, ('Delucia, Rich', 'NE'), ('Braverman, Curt', 'NE')
+														, ('Hanks, Dale', 'SE'), ('Killingsworth, Daren', 'SE')
+														, ('Jones, Alicia', 'SE'),('Parker, Alan', 'SE')
+														, ('Kern, Thomas', 'SE'), ('Hliwski, Steve', 'NE')
+														, ('Hopkins, Toby', 'SE'), ('Lloyd, Keith', 'SE')
+														, ('Curiel, Julio', 'C'), ('Weisenberger, Steve', 'C')
+														, ('Mendez, Mario', 'C'), ('Linville, Daryl', 'C')
+														, ('Perez, Arthur', 'C'), ('Healy, Jason', 'C')
+														, ('Smith, Ricky', 'C'), ('Esparza, Eris', 'W')
+														, ('Open_FSM', 'W'), ('Harber, James', 'W')
+														, ('Duenas, Atilio', 'W'), ('Gonzales, Rudy', 'W')
+														, ('Lewis, Rick', 'W')
 CREATE TABLE #Region
 	(
 		Region_Key VARCHAR(100),
@@ -42,8 +65,8 @@ FROM #FSMs
 
 (
 	SELECT DISTINCT
-	MSA_CSA__c as 'Market'
-	FROM Temporal.ZipCode
+	[MSA_CSA__c] as 'Market'
+	FROM [Temporal].[ZipCode]
 ),
 
 FSMtoMarket AS
@@ -57,10 +80,8 @@ FSMtoMarket AS
 			THEN (SELECT Service_Member_Name FROM #FSM2 WHERE id = 2)
 			WHEN Market IN ('Boston-Cambridge -NH-VT-ME')
 			THEN (SELECT Service_Member_Name FROM #FSM2 WHERE id = 3)
-			WHEN Market IN ('Boston Suburbs-West-RI', 'Syracuse, NY')
+			WHEN Market IN ('Boston Suburbs-West-RI', 'Hartford, CT', 'Syracuse, NY')
 			THEN (SELECT Service_Member_Name FROM #FSM2 WHERE id = 4)
-			WHEN Market IN ('Hartford, CT')
-			THEN (SELECT Service_Member_Name FROM #FSM2 WHERE id = 26)
 			WHEN Market IN ('Los Angeles - Orange County', 'San Diego - Bakersfield - Inland Empire')
 			THEN (SELECT Service_Member_Name FROM #FSM2 WHERE id = 20)
 			WHEN Market IN ('Phoenix, AZ', 'Denver, CO', 'Tucson, AZ')
@@ -109,38 +130,24 @@ FSMtoMarket AS
 	FROM Markets
 ),
 
-
-NumberofTechs AS
+FSM_Final AS
 (
-SELECT COUNT(*) as Tech_Count
+SELECT FSM
+	,CONCAT(Market, ISNULL(r.Region, 'ROW')) as MarketRegion
 	,Market
-FROM
-	(SELECT CASE WHEN Service_Market__c = 'Boston-Cambridge-NH-VT'
-		THEN 'Boston-Cambridge -NH-VT-ME'
-		WHEN Service_Market__c = 'San Diego- Bakersfield � Inland Empire'
-		THEN 'San Diego - Bakersfield - Inland Empire'
-		WHEN Service_Market__c = 'Los Angeles � Orange County'
-		THEN 'Los Angeles - Orange County'
-		ELSE Service_Market__c
-		END as Market
-	FROM Temporal.SVMXCServiceGroupMembers
-	WHERE SVMXC__Active__c = 1
-		AND Name NOT IN ('Central Outsourced Technician'
-						,'Northeast Outsourced Technician'
-						,'Southeast Outsourced Technician'
-						,'West Outsourced Technician'
-						,'Ashley Test Tech')
-		AND Service_Market__c IS NOT NULL
-	) a
-GROUP BY Market
+	,r.Region
+FROM FSMtoMarket f2m
+LEFT JOIN #FSM2 f on f.Service_Member_Name = f2m.FSM
+LEFT JOIN #Region r on r.Region_Key = f.Region
 )
 
-SELECT FSM
-	,f2m.Market
-	,ISNULL(r.Region, 'ROW') as Region
-	,ISNULL(n.Tech_Count,0) as ActiveTechs
-FROM FSMtoMarket f2m
-	LEFT JOIN #FSM2 f on f.Service_Member_Name = f2m.FSM
-	LEFT JOIN #Region r on r.Region_Key = f.Region
-	LEFT JOIN NumberofTechs n on n.Market = f2m.Market
-
+SELECT z.Name as ZipCode
+	,z.State__c as State
+	,z.MSA_CSA__c as Market
+	,z.Region__c as Assigned_Region
+	,f2.Region as Correct_Region
+FROM Temporal.ZipCode z
+LEFT JOIN FSM_Final f on f.MarketRegion = CONCAT(z.MSA_CSA__c, z.Region__c)
+LEFT JOIN FSM_Final f2 on f2.Market = z.MSA_CSA__c
+WHERE MSA_CSA__c NOT IN ('ROW', 'Outsourced')
+AND f.MarketRegion IS NULL

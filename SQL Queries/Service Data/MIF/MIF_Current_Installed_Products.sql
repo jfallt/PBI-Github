@@ -9,6 +9,8 @@ SELECT sip.id as sip_id
 	,ISNULL(sSite.Market__c, sIP.Market__c) as Market
 	,ISNULL(sSite.SVMXC__State__c, sIP.SVMXC__State__c) as [State] Removed 2/7/20 in favor of zip id*/
 	,qSite.zip_code__c as zip_id 
+	,CONCAT('https://quench.my.salesforce.com/', sip.id) as link
+	,ssite.SVMXC__Account__c as account_id
 FROM temporal.SVMXCInstalledProduct sIP
 	LEFT JOIN Temporal.SVMXCPMPlan sPMP on sPMP.smax_ps_single_installed_product__c = sIP.id and sPMP.svmxc__status__c = 'active'
 	LEFT JOIN Temporal.SVMXCPMScheduleDefinition sPMDef on sPMDef.svmxc__pm_plan__c = sPMP.id
